@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACPCommands Modul</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ACPCommands Modul</h1>
+    <p>Das <strong>ACPCommands</strong>-Modul ermöglicht es berechtigten Nutzern (Channel-Besitzer und App-Manager), das Admin Control Panel (ACP) zu öffnen, um administrative Aufgaben zu erledigen.</p>
+
+    <h2>Funktionen und Logik</h2>
+
+    <h3>Überprüfung und Erstellung von <code>App.modules</code></h3>
+    <p>Falls <code>App.modules</code> noch nicht existiert, wird es als leeres Objekt erstellt, um Fehler zu vermeiden, falls das <strong>ACPCommands</strong>-Modul als erstes Modul geladen wird.</p>
+
+    <h3><code>enabled</code>-Eigenschaft</h3>
+    <p>Die Eigenschaft <code>enabled</code> ist standardmäßig auf <code>true</code> gesetzt. Wenn <code>enabled</code> auf <code>false</code> gesetzt ist, wird das Modul deaktiviert, und Benutzer können nicht auf das ACP zugreifen.</p>
+
+    <h3>Funktion <code>acp</code></h3>
+    <p>Diese Funktion öffnet das Admin Control Panel für berechtigte Benutzer.</p>
+    <ul>
+      <li><strong>Berechtigungsprüfung:</strong> Nur der Channel-Besitzer und App-Manager dürfen das ACP öffnen.</li>
+      <li>Falls der Benutzer berechtigt ist, wird die HTML-Datei <code>acp.html</code> geladen und als Popup angezeigt.</li>
+      <li><strong>Nachricht bei fehlender Berechtigung:</strong> Falls der Benutzer keine Berechtigung hat, wird ihm eine entsprechende private Nachricht angezeigt.</li>
+    </ul>
+
+    <h2>Zusammenfassung</h2>
+    <p>Das <strong>ACPCommands</strong>-Modul ermöglicht es dem Channel-Besitzer und App-Manager, das Admin Control Panel zu öffnen, um administrative Aufgaben zu verwalten. Über die <code>enabled</code>-Eigenschaft kann das Modul aktiviert oder deaktiviert werden. Berechtigungen werden überprüft, und nur autorisierte Benutzer können auf das ACP zugreifen.</p>
+
+    <p><a href="index.html">Zurück zur Übersicht</a></p>
+  </div>
+</body>
+</html>
