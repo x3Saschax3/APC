@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Control Panel - Wiki</title>
+  <link rel="stylesheet" href="acp.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Control Panel - Wiki</h1>
+    <p>Willkommen im Administrations-Wiki! Hier finden Sie alle Anleitungen und Informationen zu den verfügbaren Modulen und Befehlen.</p>
+    
+    <div class="wiki-layout">
+      <!-- Inhaltsverzeichnis als Sidebar -->
+      <aside class="sidebar">
+        <h2>Inhaltsverzeichnis</h2>
+        <ul>
+          <li><a href="#topicChanger">TopicChanger Modul</a></li>
+          <li><a href="#botsay">Botsay Modul</a></li>
+          <li><a href="#appmute">AppMute Modul</a></li>
+          <li><a href="#allgemeineBefehle">Allgemeine Befehle</a></li>
+          <li><a href="#hinweise">Wichtige Hinweise</a></li>
+        </ul>
+      </aside>
+
+      <!-- Hauptinhalt -->
+      <section class="content">
+        <!-- TopicChanger Modul -->
+        <h3 id="topicChanger">TopicChanger Modul</h3>
+        <p>Das TopicChanger-Modul ermöglicht es berechtigten Nutzern, das Thema des Channels zu ändern.</p>
+        <ul>
+          <li><b>/settopic [TEXT]</b> - Setzt das Thema des Channels auf den angegebenen Text.</li>
+          <li><b>/gettopic</b> - Gibt das aktuelle Thema des Channels aus.</li>
+          <li><b>/previewtopic [TEXT]</b> - Zeigt eine Vorschau des neuen Themas.</li>
+          <li><b>/topicchangeradmin allow:[NICK]</b> - Schaltet einen Nutzer für den TopicChanger frei.</li>
+          <li><b>/topicchangeradmin</b> - Zeigt eine Liste der für den TopicChanger freigeschalteten Nutzer.</li>
+        </ul>
+        <a href="#top" class="back-to-top">Zurück zum Seitenanfang</a>
+
+        <!-- Botsay Modul -->
+        <h3 id="botsay">Botsay Modul</h3>
+        <p>Das Botsay-Modul erlaubt es berechtigten Nutzern, im Namen des Bots öffentlich Nachrichten zu senden.</p>
+        <ul>
+          <li><b>/botsay [TEXT]</b> - Sendet im Namen des Bots den eingegebenen Text als öffentliche Nachricht.</li>
+          <li><b>/botsayadmin allow:[NICK]</b> - Schaltet einen Benutzer für den Befehl <code>/botsay</code> frei.</li>
+          <li><b>/botsayadmin disallow:[NICK]</b> - Sperrt einen Benutzer für den Befehl <code>/botsay</code>.</li>
+          <li><b>/botsayadmin</b> - Gibt eine Liste der freigeschalteten Nutzer für den Befehl <code>/botsay</code> wieder.</li>
+        </ul>
+        <a href="#top" class="back-to-top">Zurück zum Seitenanfang</a>
+
+        <!-- AppMute Modul -->
+        <h3 id="appmute">AppMute Modul</h3>
+        <p>Das AppMute-Modul erlaubt es, Nutzer für eine bestimmte Zeitspanne zu muten und bietet die Möglichkeit, Mutes zu verwalten.</p>
+        <ul>
+          <li><b>/appmute</b> - Zeigt eine Liste aller aktuell gemuteten Nutzer an.</li>
+          <li><b>/appmute NICK:GRUND[:DAUER]</b> - Mutet den angegebenen Nutzer für die definierte Dauer in Minuten (Standard ist 24 Stunden, <code>!</code> bedeutet 10 Jahre, nur für AppManager verfügbar).</li>
+          <li><b>/appmute !NICK</b> - Hebt den Mute eines Nutzers auf.</li>
+        </ul>
+        <a href="#top" class="back-to-top">Zurück zum Seitenanfang</a>
+
+        <!-- Allgemeine Befehle -->
+        <h3 id="allgemeineBefehle">Allgemeine Befehle</h3>
+        <p>Diese Befehle sind für alle Module verfügbar und ermöglichen die Steuerung des Admin Control Panels.</p>
+        <ul>
+          <li><b>/acp</b> - Öffnet das Admin Control Panel.</li>
+          <li><b>/toggleModule [modul] on/off</b> - Aktiviert oder deaktiviert das angegebene Modul.</li>
+        </ul>
+        <a href="#top" class="back-to-top">Zurück zum Seitenanfang</a>
+
+        <!-- Wichtige Hinweise -->
+        <h3 id="hinweise">Wichtige Hinweise</h3>
+        <p>Das Admin Control Panel ist nur für Channel-Besitzer und App-Manager zugänglich. Verwenden Sie die Befehle sorgfältig, um die Channel-Einstellungen zu ändern.</p>
+        <a href="#top" class="back-to-top">Zurück zum Seitenanfang</a>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

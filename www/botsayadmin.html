@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Botsay Admin Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Botsay Admin Interface</h1>
+        <div>
+            <input type="text" id="allowUser" placeholder="Benutzer für /botsay freischalten">
+            <button onclick="allowUser()">Benutzer freischalten</button>
+        </div>
+        <div>
+            <input type="text" id="disallowUser" placeholder="Benutzer für /botsay sperren">
+            <button onclick="disallowUser()">Benutzer sperren</button>
+        </div>
+        <div>
+            <button onclick="clearMessages()">Gespeicherte Nachrichten löschen</button>
+        </div>
+        <div>
+            <textarea id="messages" readonly>Gespeicherte Nachrichten werden hier angezeigt...</textarea>
+            <button onclick="getMessages()">Gespeicherte Nachrichten anzeigen</button>
+        </div>
+        <div>
+            <textarea id="allowedUsers" readonly>Freigeschaltete Benutzer werden hier angezeigt...</textarea>
+            <button onclick="listAllowedUsers()">Freigeschaltete Benutzer anzeigen</button>
+        </div>
+        <div>
+            <button onclick="cleanUsers()">Ungültige Benutzer aus der Liste entfernen</button>
+        </div>
+        <div>
+            <button onclick="clearUsers()">Alle Benutzer aus der Liste entfernen</button>
+        </div>
+    </div>
+    <script>
+        var socket = new WebSocket('ws://localhost:8080');
+
+        socket.onmessage = function(event) {
+            var response = JSON.parse(event.data);
+            if (response.type === 'messages') {
+                document.getElementById('messages').value = response.data;
+            } else if (response.type === 'allowedUsers') {
+                document.getElementById('allowedUsers').value = response.data;
+            }
+        };
+
+        function allowUser() {
+            var user = document.getElementById('allowUser').value;
+            socket.send(JSON.stringify({ action: 'allow', user: user }));
+            alert(user + ' wurde freigeschaltet.');
+        }
+
+        function disallowUser() {
+            var user = document.getElementById('disallowUser').value;
+            socket.send(JSON.stringify({ action: 'disallow', user: user }));
+            alert(user + ' wurde gesperrt.');
+        }
+
+        function clearMessages() {
+            socket.send(JSON.stringify({ action: 'clearMessages' }));
+            alert('Alle gespeicherten Nachrichten wurden gelöscht.');
+        }
+
+        function getMessages() {
+            socket.send(JSON.stringify({ action: 'messages' }));
+        }
+
+        function listAllowedUsers() {
+            socket.send(JSON.stringify({ action: 'list' }));
+        }
+
+        function cleanUsers() {
+            socket.send(JSON.stringify({ action: 'clean' }));
+            alert('Ungültige Benutzer wurden aus der Liste entfernt.');
+        }
+
+        function clearUsers() {
+            var confirmClear = confirm('Möchtest du wirklich alle Benutzer aus der Liste entfernen?');
+            if (confirmClear) {
+                socket.send(JSON.stringify({ action: 'clearUsers' }));
+                alert('Alle Benutzer wurden aus der Liste entfernt.');
+            }
+        }
+    </script>
+</body>
+</html>
