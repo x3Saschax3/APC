@@ -1,0 +1,109 @@
+/* Grundlegende Styles für ein modernes ACP-Design */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #2a2a72;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Layout für Wiki-Inhalt und Sidebar */
+.wiki-layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 25%;
+  margin-right: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.sidebar h2 {
+  color: #2a2a72;
+  border-bottom: 2px solid #2a2a72;
+  padding-bottom: 5px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  color: #2a2a72;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  width: 75%;
+}
+
+.content h3 {
+  color: #2a2a72;
+  margin-top: 20px;
+}
+
+.content ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.content ul li {
+  margin-bottom: 8px;
+}
+
+.content p {
+  margin-bottom: 15px;
+}
+
+/* Stil für den "Zurück zum Seitenanfang"-Link */
+.back-to-top {
+  display: inline-block;
+  margin-top: 15px;
+  color: #2a2a72;
+  text-decoration: none;
+}
+
+.back-to-top:hover {
+  text-decoration: underline;
+}
+
+/* Responsives Design für kleinere Bildschirme */
+@media (max-width: 768px) {
+  .wiki-layout {
+    display: block;
+  }
+  
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    width: 100%;
+  }
+}
